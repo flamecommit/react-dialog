@@ -8,12 +8,12 @@ import {
 import '@shinyongjun/react-dialog/css';
 
 function App() {
-  const { alert: alertConfirm } = useContext(AlertContext);
+  const { alert: customAlert } = useContext(AlertContext);
   const { confirm: customConfirm } = useContext(ConfirmContext);
-  const { prompt: promptConfirm } = useContext(PromptContext);
+  const { prompt: customPrompt } = useContext(PromptContext);
 
   const onAlertClick = async () => {
-    await alertConfirm('are you sure?');
+    await customAlert('are you sure?');
     console.log('alert close');
   };
 
@@ -23,8 +23,16 @@ function App() {
   };
 
   const onPromptClick = async () => {
-    const result = await promptConfirm('are you sure?');
+    const result = await customPrompt('are you sure?');
     console.log(result);
+  };
+
+  const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      console.log('enter');
+      await customAlert('keyDown Alert');
+      // alert('keyDown Alert');
+    }
   };
 
   return (
@@ -51,6 +59,7 @@ function App() {
           Open to Confirm Dialog
         </button>
       </div>
+      <input type="text" onKeyDown={handleKeydown} />
     </div>
   );
 }

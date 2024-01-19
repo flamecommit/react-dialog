@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import DialogWrapper from './Wrapper';
 
 interface IProps {
@@ -11,6 +11,8 @@ interface IProps {
 }
 
 const Prompt = ({ message, _default, onClickOK, onClickCancel }: IProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -31,11 +33,19 @@ const Prompt = ({ message, _default, onClickOK, onClickCancel }: IProps) => {
     onClickOK(target.input.value);
   };
 
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   return (
     <DialogWrapper>
       <form onSubmit={handleSubmit}>
-        <div className="react-dialog__message">{message}</div>
+        <div
+          className="react-dialog__message"
+          dangerouslySetInnerHTML={{ __html: message }}
+        />
         <input
+          ref={inputRef}
           type="text"
           id="input"
           className="react-dialog__input"

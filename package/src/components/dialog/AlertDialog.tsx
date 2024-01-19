@@ -20,6 +20,7 @@ function AlertDialog({ children }: IProps) {
       setState({
         message: message !== undefined ? `${message}` : '',
         onClose: () => {
+          console.log('onClick');
           setState(undefined);
           resolve(undefined);
         },
