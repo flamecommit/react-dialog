@@ -5,22 +5,21 @@ import DialogWrapper from './Wrapper';
 
 interface IProps {
   message: string;
-  onClickOK: () => void;
-  onClickCancel: () => void;
+  onClose: () => void;
 }
 
-const Confirm = ({ message, onClickOK, onClickCancel }: IProps) => {
+const Alert = ({ message, onClose }: IProps) => {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClickCancel();
+        onClose();
       }
     };
 
     document.addEventListener('keydown', handleEscape);
 
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [onClickCancel]);
+  }, [onClose]);
 
   return (
     <DialogWrapper>
@@ -29,21 +28,14 @@ const Confirm = ({ message, onClickOK, onClickCancel }: IProps) => {
         <button
           type="button"
           className="react-dialog__button-ok"
-          onClick={onClickOK}
+          onClick={onClose}
           autoFocus
         >
           ok
-        </button>
-        <button
-          type="button"
-          className="react-dialog__button-cancel"
-          onClick={onClickCancel}
-        >
-          cancel
         </button>
       </div>
     </DialogWrapper>
   );
 };
 
-export default Confirm;
+export default Alert;

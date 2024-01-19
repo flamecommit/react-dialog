@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactNode, useState } from 'react';
-import ConfirmContext from '../context/ConfirmContext';
-import Confirm from './UI/Confirm';
+import ConfirmContext from '../../context/ConfirmContext';
+import Confirm from '../UI/Confirm';
 
 type ConfirmState = {
   message: string;
