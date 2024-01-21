@@ -23,7 +23,9 @@ const Alert = ({ message, onClose }: IProps) => {
   }, [onClose]);
 
   useEffect(() => {
-    okRef.current?.focus();
+    setTimeout(() => {
+      okRef.current?.focus();
+    });
   }, []);
 
   return (

@@ -34,7 +34,9 @@ const Prompt = ({ message, _default, onClickOK, onClickCancel }: IProps) => {
   };
 
   useEffect(() => {
-    inputRef.current?.focus();
+    setTimeout(() => {
+      inputRef.current?.focus();
+    });
   }, []);
 
   return (

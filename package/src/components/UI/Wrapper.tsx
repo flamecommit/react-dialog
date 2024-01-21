@@ -7,13 +7,8 @@ interface IProps {
 }
 
 const DialogWrapper = ({ children }: IProps) => {
-  const stopPropagation = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    console.log('stopPropagation');
-    e.stopPropagation();
-  };
-
   return (
-    <div className="react-dialog__wrapper" onKeyUpCapture={stopPropagation}>
+    <div className="react-dialog__wrapper">
       <div className="react-dialog__dialog">{children}</div>
     </div>
   );

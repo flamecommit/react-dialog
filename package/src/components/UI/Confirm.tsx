@@ -25,7 +25,9 @@ const Confirm = ({ message, onClickOK, onClickCancel }: IProps) => {
   }, [onClickCancel]);
 
   useEffect(() => {
-    okRef.current?.focus();
+    setTimeout(() => {
+      okRef.current?.focus();
+    });
   }, []);
 
   return (
