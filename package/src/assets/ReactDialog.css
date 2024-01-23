@@ -34,11 +34,6 @@
   column-gap: 10px;
 }
 
-.react-dialog__button-wrapper button:focus {
-  outline: 2px dashed #000;
-  outline-offset: 2px;
-}
-
 .react-dialog__button-ok {
   display: flex;
   justify-content: center;
