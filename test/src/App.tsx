@@ -1,16 +1,13 @@
 import * as React from 'react';
-import { useContext } from 'react';
-import {
-  AlertContext,
-  ConfirmContext,
-  PromptContext,
-} from '@shinyongjun/react-dialog';
+import { useDialog } from '@shinyongjun/react-dialog';
 import '@shinyongjun/react-dialog/css';
 
 function App() {
-  const { alert: customAlert } = useContext(AlertContext);
-  const { confirm: customConfirm } = useContext(ConfirmContext);
-  const { prompt: customPrompt } = useContext(PromptContext);
+  const {
+    alert: customAlert,
+    confirm: customConfirm,
+    prompt: customPrompt,
+  } = useDialog();
 
   const onAlertClick = async () => {
     await customAlert('are you sure?');
