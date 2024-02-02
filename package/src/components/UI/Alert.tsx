@@ -4,10 +4,12 @@ import DialogWrapper from './Wrapper';
 
 interface IProps {
   message: string;
+  confirmText: string;
+  cancelText: string;
   onClose: () => void;
 }
 
-const Alert = ({ message, onClose }: IProps) => {
+const Alert = ({ message, confirmText, cancelText, onClose }: IProps) => {
   const okRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const Alert = ({ message, onClose }: IProps) => {
           className="react-dialog__button-ok"
           onClick={onClose}
         >
-          ok
+          {confirmText}
         </button>
       </div>
     </DialogWrapper>

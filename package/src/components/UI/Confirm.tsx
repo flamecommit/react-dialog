@@ -5,11 +5,19 @@ import DialogWrapper from './Wrapper';
 
 interface IProps {
   message: string;
+  confirmText: string;
+  cancelText: string;
   onClickOK: () => void;
   onClickCancel: () => void;
 }
 
-const Confirm = ({ message, onClickOK, onClickCancel }: IProps) => {
+const Confirm = ({
+  message,
+  confirmText,
+  cancelText,
+  onClickOK,
+  onClickCancel,
+}: IProps) => {
   const okRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -44,14 +52,14 @@ const Confirm = ({ message, onClickOK, onClickCancel }: IProps) => {
           onClick={onClickOK}
           autoFocus
         >
-          ok
+          {confirmText}
         </button>
         <button
           type="button"
           className="react-dialog__button-cancel"
           onClick={onClickCancel}
         >
-          cancel
+          {cancelText}
         </button>
       </div>
     </DialogWrapper>

@@ -8,13 +8,21 @@ import PromptDialog from './dialog/PromptDialog';
 
 interface IProps {
   children: ReactNode;
+  confirmText?: string;
+  cancelText?: string;
 }
 
-function DialogProvider({ children }: IProps) {
+function DialogProvider({
+  children,
+  confirmText = 'ok',
+  cancelText = 'cancel',
+}: IProps) {
   return (
-    <PromptDialog>
-      <AlertDialog>
-        <ConfirmDialog>{children}</ConfirmDialog>
+    <PromptDialog confirmText={confirmText} cancelText={cancelText}>
+      <AlertDialog confirmText={confirmText} cancelText={cancelText}>
+        <ConfirmDialog confirmText={confirmText} cancelText={cancelText}>
+          {children}
+        </ConfirmDialog>
       </AlertDialog>
     </PromptDialog>
   );

@@ -9,10 +9,12 @@ type AlertState = {
 };
 
 interface IProps {
+  confirmText: string;
+  cancelText: string;
   children: ReactNode;
 }
 
-function AlertDialog({ children }: IProps) {
+function AlertDialog({ children, confirmText, cancelText }: IProps) {
   const [state, setState] = useState<AlertState>();
 
   const alert = (message?: any): Promise<undefined> => {
@@ -30,7 +32,14 @@ function AlertDialog({ children }: IProps) {
   return (
     <AlertContext.Provider value={{ alert }}>
       {children}
-      {state && <Alert message={state.message} onClose={state.onClose} />}
+      {state && (
+        <Alert
+          confirmText={confirmText}
+          cancelText={cancelText}
+          message={state.message}
+          onClose={state.onClose}
+        />
+      )}
     </AlertContext.Provider>
   );
 }

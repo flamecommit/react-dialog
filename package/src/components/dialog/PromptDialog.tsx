@@ -11,10 +11,12 @@ type PromptState = {
 };
 
 interface IProps {
+  confirmText: string;
+  cancelText: string;
   children: ReactNode;
 }
 
-function PromptDialog({ children }: IProps) {
+function PromptDialog({ children, confirmText, cancelText }: IProps) {
   const [state, setState] = useState<PromptState>();
 
   const prompt = (
@@ -42,6 +44,8 @@ function PromptDialog({ children }: IProps) {
       {children}
       {state && (
         <Prompt
+          confirmText={confirmText}
+          cancelText={cancelText}
           message={state.message}
           _default={state._default}
           onClickOK={state.onClickOK}

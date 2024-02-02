@@ -5,12 +5,14 @@ import DialogWrapper from './Wrapper';
 
 interface IProps {
   message: string;
+  confirmText: string;
+  cancelText: string;
   _default: string;
   onClickOK: (result: string) => void;
   onClickCancel: () => void;
 }
 
-const Prompt = ({ message, _default, onClickOK, onClickCancel }: IProps) => {
+const Prompt = ({ message, confirmText, cancelText, _default, onClickOK, onClickCancel }: IProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -56,14 +58,14 @@ const Prompt = ({ message, _default, onClickOK, onClickCancel }: IProps) => {
         />
         <div className="react-dialog__button-wrapper">
           <button type="submit" className="react-dialog__button-ok">
-            ok
+            {confirmText}
           </button>
           <button
             type="reset"
             className="react-dialog__button-cancel"
             onClick={onClickCancel}
           >
-            cancel
+            {cancelText}
           </button>
         </div>
       </form>

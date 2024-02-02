@@ -6,7 +6,7 @@ import { DialogProvider } from '@shinyongjun/react-dialog';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DialogProvider>
+    <DialogProvider confirmText="test">
       <App />
     </DialogProvider>
   </React.StrictMode>

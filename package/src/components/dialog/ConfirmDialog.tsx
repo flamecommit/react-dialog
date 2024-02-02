@@ -10,10 +10,12 @@ type ConfirmState = {
 };
 
 interface IProps {
+  confirmText: string;
+  cancelText: string;
   children: ReactNode;
 }
 
-function ConfirmDialog({ children }: IProps) {
+function ConfirmDialog({ children, confirmText, cancelText }: IProps) {
   const [state, setState] = useState<ConfirmState>();
 
   const confirm = (message?: string): Promise<boolean> => {
@@ -41,6 +43,8 @@ function ConfirmDialog({ children }: IProps) {
       {/* state 여부에 따라 Confirm 다이얼로그 띄우기 */}
       {state && (
         <Confirm
+          confirmText={confirmText}
+          cancelText={cancelText}
           message={state.message}
           onClickOK={state.onClickOK}
           onClickCancel={state.onClickCancel}
