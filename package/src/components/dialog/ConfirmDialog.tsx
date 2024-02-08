@@ -3,20 +3,26 @@ import { ReactNode, useState } from 'react';
 import ConfirmContext from '../../context/ConfirmContext';
 import Confirm from '../UI/Confirm';
 
-type ConfirmState = {
+type TConfirmState = {
   message: string;
   onClickOK: () => void;
   onClickCancel: () => void;
 };
 
 interface IProps {
+  className: string;
   confirmText: string;
   cancelText: string;
   children: ReactNode;
 }
 
-function ConfirmDialog({ children, confirmText, cancelText }: IProps) {
-  const [state, setState] = useState<ConfirmState>();
+function ConfirmDialog({
+  className,
+  children,
+  confirmText,
+  cancelText,
+}: IProps) {
+  const [state, setState] = useState<TConfirmState>();
 
   const confirm = (message?: string): Promise<boolean> => {
     return new Promise((resolve) => {
@@ -43,6 +49,7 @@ function ConfirmDialog({ children, confirmText, cancelText }: IProps) {
       {/* state 여부에 따라 Confirm 다이얼로그 띄우기 */}
       {state && (
         <Confirm
+          className={className}
           confirmText={confirmText}
           cancelText={cancelText}
           message={state.message}

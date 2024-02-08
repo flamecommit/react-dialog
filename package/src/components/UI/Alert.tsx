@@ -3,13 +3,13 @@ import { useEffect, useRef } from 'react';
 import DialogWrapper from './Wrapper';
 
 interface IProps {
+  className: string;
   message: string;
   confirmText: string;
-  cancelText: string;
   onClose: () => void;
 }
 
-const Alert = ({ message, confirmText, cancelText, onClose }: IProps) => {
+const Alert = ({ className, message, confirmText, onClose }: IProps) => {
   const okRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Alert = ({ message, confirmText, cancelText, onClose }: IProps) => {
   }, []);
 
   return (
-    <DialogWrapper>
+    <DialogWrapper className={className}>
       <div
         className="react-dialog__message"
         dangerouslySetInnerHTML={{ __html: message }}

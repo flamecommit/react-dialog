@@ -3,7 +3,7 @@ import { ReactNode, useState } from 'react';
 import PromptContext from '../../context/PromptContext';
 import Prompt from '../UI/Prompt';
 
-type PromptState = {
+type TPromptState = {
   message: string;
   _default: string;
   onClickOK: (result: string) => void;
@@ -11,13 +11,19 @@ type PromptState = {
 };
 
 interface IProps {
+  className: string;
   confirmText: string;
   cancelText: string;
   children: ReactNode;
 }
 
-function PromptDialog({ children, confirmText, cancelText }: IProps) {
-  const [state, setState] = useState<PromptState>();
+function PromptDialog({
+  className,
+  children,
+  confirmText,
+  cancelText,
+}: IProps) {
+  const [state, setState] = useState<TPromptState>();
 
   const prompt = (
     message?: string,
@@ -44,6 +50,7 @@ function PromptDialog({ children, confirmText, cancelText }: IProps) {
       {children}
       {state && (
         <Prompt
+          className={className}
           confirmText={confirmText}
           cancelText={cancelText}
           message={state.message}

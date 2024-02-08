@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import DialogWrapper from './Wrapper';
 
 interface IProps {
+  className: string;
   message: string;
   confirmText: string;
   cancelText: string;
@@ -12,7 +13,15 @@ interface IProps {
   onClickCancel: () => void;
 }
 
-const Prompt = ({ message, confirmText, cancelText, _default, onClickOK, onClickCancel }: IProps) => {
+const Prompt = ({
+  className,
+  message,
+  confirmText,
+  cancelText,
+  _default,
+  onClickOK,
+  onClickCancel,
+}: IProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -42,7 +51,7 @@ const Prompt = ({ message, confirmText, cancelText, _default, onClickOK, onClick
   }, []);
 
   return (
-    <DialogWrapper>
+    <DialogWrapper className={className}>
       <form onSubmit={handleSubmit}>
         <div
           className="react-dialog__message"

@@ -3,19 +3,19 @@ import { ReactNode, useState } from 'react';
 import AlertContext from '../../context/AlertContext';
 import Alert from '../UI/Alert';
 
-type AlertState = {
+type TAlertState = {
   message: string;
   onClose: () => void;
 };
 
 interface IProps {
+  className: string;
   confirmText: string;
-  cancelText: string;
   children: ReactNode;
 }
 
-function AlertDialog({ children, confirmText, cancelText }: IProps) {
-  const [state, setState] = useState<AlertState>();
+function AlertDialog({ children, confirmText, className }: IProps) {
+  const [state, setState] = useState<TAlertState>();
 
   const alert = (message?: any): Promise<undefined> => {
     return new Promise((resolve) => {
@@ -34,8 +34,8 @@ function AlertDialog({ children, confirmText, cancelText }: IProps) {
       {children}
       {state && (
         <Alert
+          className={className}
           confirmText={confirmText}
-          cancelText={cancelText}
           message={state.message}
           onClose={state.onClose}
         />

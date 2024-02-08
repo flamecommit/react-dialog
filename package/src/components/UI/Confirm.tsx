@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import * as React from 'react';
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import DialogWrapper from './Wrapper';
 
 interface IProps {
+  className: string;
   message: string;
   confirmText: string;
   cancelText: string;
@@ -12,6 +13,7 @@ interface IProps {
 }
 
 const Confirm = ({
+  className,
   message,
   confirmText,
   cancelText,
@@ -39,7 +41,7 @@ const Confirm = ({
   }, []);
 
   return (
-    <DialogWrapper>
+    <DialogWrapper className={className}>
       <div
         className="react-dialog__message"
         dangerouslySetInnerHTML={{ __html: message }}

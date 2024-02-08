@@ -4,13 +4,14 @@ import { ReactNode } from 'react';
 import Portal from './Portal';
 
 interface IProps {
+  className: string;
   children: ReactNode;
 }
 
-const DialogWrapper = ({ children }: IProps) => {
+const DialogWrapper = ({ className, children }: IProps) => {
   return (
     <Portal selector="body">
-      <div className="react-dialog__wrapper">
+      <div className={`react-dialog__wrapper${className && ` ${className}`}`}>
         <div className="react-dialog__dialog">{children}</div>
       </div>
     </Portal>
