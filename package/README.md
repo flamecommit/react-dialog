@@ -32,6 +32,7 @@ import { DialogProvider } from '@shinyongjun/react-dialog';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
+import '@shinyongjun/react-dialog/css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -46,7 +47,6 @@ root.render(
 ```tsx
 import * as React from 'react';
 import { useDialog } from '@shinyongjun/react-dialog';
-import '@shinyongjun/react-dialog/css';
 
 function App() {
   const { alert } = useDialog();
