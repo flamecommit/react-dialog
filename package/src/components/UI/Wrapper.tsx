@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import * as React from 'react';
 import { ReactNode } from 'react';
 import Portal from './Portal';
 

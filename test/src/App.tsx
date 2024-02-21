@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useDialog } from '@shinyongjun/react-dialog';
 import '@shinyongjun/react-dialog/css';
 

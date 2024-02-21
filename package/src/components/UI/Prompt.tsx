@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import DialogWrapper from './Wrapper';
 

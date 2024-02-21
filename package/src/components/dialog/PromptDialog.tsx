@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ReactNode, useState } from 'react';
 import PromptContext from '../../context/PromptContext';
 import Prompt from '../UI/Prompt';

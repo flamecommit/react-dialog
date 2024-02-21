@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ReactNode, useState } from 'react';
 import ConfirmContext from '../../context/ConfirmContext';
 import Confirm from '../UI/Confirm';

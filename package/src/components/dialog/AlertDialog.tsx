@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ReactNode, useState } from 'react';
 import AlertContext from '../../context/AlertContext';
 import Alert from '../UI/Alert';

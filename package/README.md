@@ -70,11 +70,11 @@ export default App;
 
 ## API 문서
 
-라이브러리의 주요 API들에 대한 문서를 [여기](https://shinyongjun.gitbook.io/react-dialog/)에서 확인할 수 있습니다.
+라이브러리의 주요 API들에 대한 문서를 [Docs](https://shinyongjun.gitbook.io/react-dialog/)에서 확인할 수 있습니다.
 
 ## 실제 사용 사례
 
-라이브러리의 데모는 [여기](https://shinyongjun.com/library/react-dialog)에서 만나볼 수 있습니다.
+라이브러리의 실제 사용 예시는 [Demo](https://shinyongjun.com/library/react-dialog)에서 확인할 수 있습니다.
 
 ## 피드백 및 지원
 
