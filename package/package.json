@@ -22,7 +22,7 @@
   ],
   "homepage": "https://shinyongjun.gitbook.io/react-dialog",
   "bugs": {
-    "url": "https://github.com/shinyj1991/react-dialog/issues",
+    "url": "https://github.com/flamecommit/react-dialog/issues",
     "email": "shinyj1991@gmail.com"
   },
   "author": {
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shinyj1991/react-dialog.git"
+    "url": "https://github.com/flamecommit/react-dialog.git"
   },
   "files": [
     "dist"
