@@ -10,6 +10,7 @@ interface IProps {
   confirmText?: string;
   cancelText?: string;
   className?: string;
+  backgroundClose?: boolean;
 }
 
 function DialogProvider({
@@ -17,18 +18,25 @@ function DialogProvider({
   confirmText = 'ok',
   cancelText = 'cancel',
   className = '',
+  backgroundClose = false,
 }: IProps) {
   return (
     <PromptDialog
       confirmText={confirmText}
       cancelText={cancelText}
       className={className}
+      backgroundClose={backgroundClose}
     >
-      <AlertDialog confirmText={confirmText} className={className}>
+      <AlertDialog
+        confirmText={confirmText}
+        className={className}
+        backgroundClose={backgroundClose}
+      >
         <ConfirmDialog
           confirmText={confirmText}
           cancelText={cancelText}
           className={className}
+          backgroundClose={backgroundClose}
         >
           {children}
         </ConfirmDialog>

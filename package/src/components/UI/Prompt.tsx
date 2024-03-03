@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import { useEffect, useRef } from 'react';
+import useOutsideClick from '../../hooks/useOutsideClick';
 import DialogWrapper from './Wrapper';
 
 interface IProps {
@@ -8,6 +9,7 @@ interface IProps {
   confirmText: string;
   cancelText: string;
   _default: string;
+  backgroundClose: boolean;
   onClickOK: (result: string) => void;
   onClickCancel: () => void;
 }
@@ -18,10 +20,12 @@ const Prompt = ({
   confirmText,
   cancelText,
   _default,
+  backgroundClose,
   onClickOK,
   onClickCancel,
 }: IProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -49,8 +53,14 @@ const Prompt = ({
     });
   }, []);
 
+  useOutsideClick(dialogRef, () => {
+    if (backgroundClose) {
+      onClickCancel();
+    }
+  });
+
   return (
-    <DialogWrapper className={className}>
+    <DialogWrapper dialogRef={dialogRef} className={className}>
       <form onSubmit={handleSubmit}>
         <div
           className="react-dialog__message"

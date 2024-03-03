@@ -1,15 +1,24 @@
 import { useEffect, useRef } from 'react';
+import useOutsideClick from '../../hooks/useOutsideClick';
 import DialogWrapper from './Wrapper';
 
 interface IProps {
   className: string;
   message: string;
   confirmText: string;
+  backgroundClose: boolean;
   onClose: () => void;
 }
 
-const Alert = ({ className, message, confirmText, onClose }: IProps) => {
+const Alert = ({
+  className,
+  message,
+  confirmText,
+  backgroundClose,
+  onClose,
+}: IProps) => {
   const okRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -29,8 +38,14 @@ const Alert = ({ className, message, confirmText, onClose }: IProps) => {
     });
   }, []);
 
+  useOutsideClick(dialogRef, () => {
+    if (backgroundClose) {
+      onClose();
+    }
+  });
+
   return (
-    <DialogWrapper className={className}>
+    <DialogWrapper dialogRef={dialogRef} className={className}>
       <div
         className="react-dialog__message"
         dangerouslySetInnerHTML={{ __html: message }}

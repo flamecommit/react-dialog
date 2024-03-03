@@ -14,6 +14,7 @@ interface IProps {
   confirmText: string;
   cancelText: string;
   children: ReactNode;
+  backgroundClose: boolean;
 }
 
 function PromptDialog({
@@ -21,6 +22,7 @@ function PromptDialog({
   children,
   confirmText,
   cancelText,
+  backgroundClose,
 }: IProps) {
   const [state, setState] = useState<TPromptState>();
 
@@ -56,6 +58,7 @@ function PromptDialog({
           _default={state._default}
           onClickOK={state.onClickOK}
           onClickCancel={state.onClickCancel}
+          backgroundClose={backgroundClose}
         />
       )}
     </PromptContext.Provider>

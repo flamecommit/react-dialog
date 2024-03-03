@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import { useEffect, useRef } from 'react';
+import useOutsideClick from '../../hooks/useOutsideClick';
 import DialogWrapper from './Wrapper';
 
 interface IProps {
@@ -7,6 +8,7 @@ interface IProps {
   message: string;
   confirmText: string;
   cancelText: string;
+  backgroundClose: boolean;
   onClickOK: () => void;
   onClickCancel: () => void;
 }
@@ -16,10 +18,12 @@ const Confirm = ({
   message,
   confirmText,
   cancelText,
+  backgroundClose,
   onClickOK,
   onClickCancel,
 }: IProps) => {
   const okRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -39,8 +43,14 @@ const Confirm = ({
     });
   }, []);
 
+  useOutsideClick(dialogRef, () => {
+    if (backgroundClose) {
+      onClickCancel();
+    }
+  });
+
   return (
-    <DialogWrapper className={className}>
+    <DialogWrapper dialogRef={dialogRef} className={className}>
       <div
         className="react-dialog__message"
         dangerouslySetInnerHTML={{ __html: message }}

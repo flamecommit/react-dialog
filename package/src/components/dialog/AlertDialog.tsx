@@ -11,9 +11,15 @@ interface IProps {
   className: string;
   confirmText: string;
   children: ReactNode;
+  backgroundClose: boolean;
 }
 
-function AlertDialog({ children, confirmText, className }: IProps) {
+function AlertDialog({
+  children,
+  confirmText,
+  className,
+  backgroundClose,
+}: IProps) {
   const [state, setState] = useState<TAlertState>();
 
   const alert = (message?: any): Promise<undefined> => {
@@ -37,6 +43,7 @@ function AlertDialog({ children, confirmText, className }: IProps) {
           confirmText={confirmText}
           message={state.message}
           onClose={state.onClose}
+          backgroundClose={backgroundClose}
         />
       )}
     </AlertContext.Provider>

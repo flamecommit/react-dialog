@@ -13,6 +13,7 @@ interface IProps {
   confirmText: string;
   cancelText: string;
   children: ReactNode;
+  backgroundClose: boolean;
 }
 
 function ConfirmDialog({
@@ -20,6 +21,7 @@ function ConfirmDialog({
   children,
   confirmText,
   cancelText,
+  backgroundClose,
 }: IProps) {
   const [state, setState] = useState<TConfirmState>();
 
@@ -54,6 +56,7 @@ function ConfirmDialog({
           message={state.message}
           onClickOK={state.onClickOK}
           onClickCancel={state.onClickCancel}
+          backgroundClose={backgroundClose}
         />
       )}
     </ConfirmContext.Provider>
